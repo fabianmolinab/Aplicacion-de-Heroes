@@ -7,5 +7,3 @@ export function HeroesApp() {
       </div>
   );
 }
-
-
