@@ -1,9 +1,8 @@
-import React from 'react';
+import React       from 'react';
+import {AppRouter} from './routers/AppRouter';
 
-export function HeroesApp() {
+export const HeroesApp = () => {
   return (
-      <div>
-        <h1> Heroes App </h1>
-      </div>
+      <AppRouter/>
   );
-}
+};
