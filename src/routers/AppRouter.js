@@ -8,7 +8,7 @@ export const AppRouter = () => {
   return (
       <Router>
         <div>
-          //Switch condiciona o enlaza el componente con el url asignado
+          {/*Switch condiciona o enlaza el componente con el url asignado*/}
           <Switch>
             <Route exact path="/login" component={LoginScreen}/>
             <Route path="/" component={DashboardRoutes}/>
