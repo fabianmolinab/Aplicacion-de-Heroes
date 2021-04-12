@@ -2,9 +2,12 @@ import React from 'react';
 
 export const DcScreen = () => {
 
+  const publisher = 'DC Comics';
+
   return (
       <div>
-        <h1>Hola soy el screen de Fabian</h1>
+        <h1>Esta es la pagina de DC</h1>
+
       </div>
   );
 };
