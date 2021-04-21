@@ -1,4 +1,4 @@
-import React                   from 'react';
+import React, { useMemo }      from 'react';
 import { Redirect, useParams } from 'react-router-dom';
 import { getHeroById }         from '../../selectors/getHeroById';
 
@@ -7,16 +7,18 @@ export const HeroScreen = ( {history} ) => {
   //useParams es un Hook para pasar como parametro algun elemento de la URL
   const {heroeId} = useParams();
 
-  const [ hero ] = getHeroById( heroeId );
+// Usememo renderiza getHerById si heroId cambia
+  const hero = useMemo( () => getHeroById( heroeId ), [ heroeId ] );
 
   //Validamos el URL si es incorrecto se redirige a home
   if ( !hero ) {
     return <Redirect to="/"/>;
   }
 
+  //Boton de retroceder a la pagina anterior
   const handleReturn = () => {
 
-    //goBack regresa a la pagina anterior, no olvides colocar history como parametro
+    //goBack regresa a la pagina anterior, no olvides colocar history como parametro en el componente
     if ( history.length <= 2 ) {
       history.push( '/' );
     } else {
@@ -25,15 +27,15 @@ export const HeroScreen = ( {history} ) => {
 
   };
 
-  //Boton de retroceder a la pagina anterior
   const
-      {
-        superhero,
-        publisher,
-        alter_ego,
-        first_appearance,
-        characters,
-      } = hero;
+      [
+        {
+          superhero,
+          publisher,
+          alter_ego,
+          first_appearance,
+          characters,
+        } ] = hero;
 
   return (
       <div className="row mt-5">
@@ -41,7 +43,7 @@ export const HeroScreen = ( {history} ) => {
           <img
               src={ `../assets/heroes/${ heroeId }.jpg` }
               alt={ superhero }
-              className="img-thumbnail"
+              className="img-thumbnail animate__animated animate__fadeInLeft"
           />
         </div>
 
