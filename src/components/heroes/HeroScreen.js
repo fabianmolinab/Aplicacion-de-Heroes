@@ -46,7 +46,6 @@ export const HeroScreen = ( {history} ) => {
               className="img-thumbnail animate__animated animate__fadeInLeft"
           />
         </div>
-
         <div className="col-8">
           <h3> { superhero }</h3>
           <ul className="list-group list-group-flush">
@@ -66,7 +65,6 @@ export const HeroScreen = ( {history} ) => {
           >
             Return
           </button>
-
         </div>
       </div>
   );
