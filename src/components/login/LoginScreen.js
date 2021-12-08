@@ -3,7 +3,7 @@ import { AuthContext }       from '../../auth/AuthContext';
 
 export const LoginScreen = ( { history } ) => {
 
-  //Lamamos a la funcion dispach con el context
+  //Llamamos a la funcion dispach con el context
   const { dispatch } = useContext( AuthContext );
 
   //Creamos la acción de login con le type y payload(los parametros)
@@ -15,14 +15,15 @@ export const LoginScreen = ( { history } ) => {
   };
 
   const handleLogin = () => {
-    //history.push('/');
+
+    const lastPath = localStorage.getItem( 'lasPath' ) || '/';
 
     //El navegador no recuerda la dirección anterior
     //history.replace( '/' );
 
     //Pasamos la acción como parametro del dispatch
     dispatch( accionLogin );
-    history.replace( '/' );
+    history.replace( lastPath );
   };
 
   return (
