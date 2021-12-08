@@ -1,30 +1,30 @@
-import React     from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
-import { Route, Redirect } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom'
 
-export const PrivateRoute = ( {
+export const PrivateRoute = ({
   isAuthenticated,
   component: Component,
   ...rest
-} ) => {
-  console.log( rest );
-  localStorage.setItem( 'lastPath', rest.location.pathname );
-  localStorage.setItem( 'query', rest.location.search );
+}) => {
+  console.log(rest)
+  localStorage.setItem('lastPath', rest.location.pathname)
+  localStorage.setItem('query', rest.location.search)
 
   return (
       <Route { ...rest }
-             component={ ( props ) => (
-                 ( isAuthenticated )
-                     ? ( <Component { ...props } /> )
-                     : ( <Redirect to="/login"/> )
+             component={ (props) => (
+               (isAuthenticated)
+                 ? (<Component { ...props } />)
+                 : (<Redirect to="/login"/>)
              ) }
 
       />
-  );
-};
+  )
+}
 
 PrivateRoute.propTypes = {
   isAuthenticated: PropTypes.bool.isRequired,
-  component: PropTypes.func.isRequired,
-};
+  component: PropTypes.func.isRequired
+}

@@ -1,8 +1,7 @@
-import React        from 'react';
-import { HeroList } from '../heroes/HeroList';
+import React from 'react'
+import { HeroList } from '../heroes/HeroList'
 
 export const DcScreen = () => {
-
   return (
       <div>
         <h1>Pagina de DC</h1>
@@ -10,5 +9,5 @@ export const DcScreen = () => {
         <HeroList publisher="DC Comics"/>
 
       </div>
-  );
-};
+  )
+}

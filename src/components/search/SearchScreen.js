@@ -1,31 +1,29 @@
-import queryString from 'query-string';
-import React, { useMemo } from 'react';
-import { useLocation } from 'react-router-dom';
-import { useForm } from '../../hooks/useForm';
-import { getHeroesByName } from '../../selectors/getHeroesByName';
-import { HeroCard } from '../heroes/HeroCard';
-
+import queryString from 'query-string'
+import React, { useMemo } from 'react'
+import { useLocation } from 'react-router-dom'
+import { useForm } from '../../hooks/useForm'
+import { getHeroesByName } from '../../selectors/getHeroesByName'
+import { HeroCard } from '../heroes/HeroCard'
 
 export const SearchScreen = ({ history }) => {
+  // hook de reactrouter para extraer la location
+  const location = useLocation()
+  const { q = '' } = queryString.parse(location.search)
 
-  //hook de reactrouter para extraer la location
-  const location = useLocation();
-  const { q = '' } = queryString.parse(location.search);
-
-  //Se llamo al useForm(customHook) y se le paso como initialState el Name del input
+  // Se llamo al useForm(customHook) y se le paso como initialState el Name del input
   const [values, handleInputChange] = useForm({
-    searchText: q,
-  });
+    searchText: q
+  })
 
-  const { searchText } = values;
+  const { searchText } = values
 
   // Llama a la función solo cuando la URL cambie y realize el filtro segun lo que se ingrese
-  const heroesFiltered = useMemo(() => getHeroesByName(q), [q]);
+  const heroesFiltered = useMemo(() => getHeroesByName(q), [q])
 
   const handleSearch = (e) => {
-    e.preventDefault();
-    history.push(`?q=${searchText}`);
-  };
+    e.preventDefault()
+    history.push(`?q=${searchText}`)
+  }
 
   return (
     <div>
@@ -61,16 +59,14 @@ export const SearchScreen = ({ history }) => {
           <h4>Results</h4>
           <hr />
           {
-            (q === '')
-            &&
+            (q === '') &&
             <div className="alert alert-info">
               Search a hero
             </div>
           }
 
           {
-            (q !== '' && heroesFiltered.length === 0)
-            &&
+            (q !== '' && heroesFiltered.length === 0) &&
             <div className="alert alert-danger">
               There is no a hero with {q}
             </div>
@@ -87,6 +83,5 @@ export const SearchScreen = ({ history }) => {
         </div>
       </div>
     </div>
-  );
-};
-
+  )
+}

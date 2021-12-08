@@ -1,30 +1,28 @@
-import React, { useContext } from 'react';
-import { AuthContext }       from '../../auth/AuthContext';
+import React, { useContext } from 'react'
+import { AuthContext } from '../../auth/AuthContext'
 
-export const LoginScreen = ( { history } ) => {
+export const LoginScreen = ({ history }) => {
+  // Llamamos a la funcion dispach con el context
+  const { dispatch } = useContext(AuthContext)
 
-  //Llamamos a la funcion dispach con el context
-  const { dispatch } = useContext( AuthContext );
-
-  //Creamos la acción de login con le type y payload(los parametros)
+  // Creamos la acción de login con le type y payload(los parametros)
   const accionLogin = {
     type: '[auth] login',
     payload: {
-      name: 'Fabian',
-    },
-  };
+      name: 'Fabian'
+    }
+  }
 
   const handleLogin = () => {
+    const lastPath = localStorage.getItem('lasPath') || '/'
 
-    const lastPath = localStorage.getItem( 'lasPath' ) || '/';
+    // El navegador no recuerda la dirección anterior
+    // history.replace( '/' );
 
-    //El navegador no recuerda la dirección anterior
-    //history.replace( '/' );
-
-    //Pasamos la acción como parametro del dispatch
-    dispatch( accionLogin );
-    history.replace( lastPath );
-  };
+    // Pasamos la acción como parametro del dispatch
+    dispatch(accionLogin)
+    history.replace(lastPath)
+  }
 
   return (
       <div className="container mt-5">
@@ -38,7 +36,5 @@ export const LoginScreen = ( { history } ) => {
           Login
         </button>
       </div>
-  );
-};
-
-
+  )
+}
