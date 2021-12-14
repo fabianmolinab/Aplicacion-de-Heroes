@@ -17,7 +17,7 @@ module.exports = {
     ecmaFeatures: {
       jsx: true
     },
-    ecmaVersion: 13,
+    ecmaVersion: 12,
     sourceType: 'module'
   },
   plugins: [
@@ -26,5 +26,10 @@ module.exports = {
   rules: {
     'react/react-in-jsx-scope': RULES.OFF,
     'react/prop-types': RULES.OFF
+  },
+  settings: {
+    react: {
+      version: 'detectect'
+    }
   }
 }
