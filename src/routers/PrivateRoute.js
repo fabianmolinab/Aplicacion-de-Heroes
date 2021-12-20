@@ -1,7 +1,6 @@
-import React from 'react'
 import PropTypes from 'prop-types'
-
-import { Route, Redirect } from 'react-router-dom'
+import React from 'react'
+import { Redirect, Route } from 'react-router-dom'
 
 export const PrivateRoute = ({
   isAuthenticated,
@@ -13,14 +12,14 @@ export const PrivateRoute = ({
   localStorage.setItem('query', rest.location.search)
 
   return (
-      <Route { ...rest }
-             component={ (props) => (
-               (isAuthenticated)
-                 ? (<Component { ...props } />)
-                 : (<Redirect to="/login"/>)
-             ) }
+    <Route {...rest}
+      component={(props) => (
+        (isAuthenticated)
+          ? (<Component {...props} />)
+          : (<Redirect to="/login" />)
+      )}
 
-      />
+    />
   )
 }
 
