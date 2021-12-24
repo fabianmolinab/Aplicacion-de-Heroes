@@ -7,7 +7,6 @@ export const PrivateRoute = ({
   component: Component,
   ...rest
 }) => {
-  console.log(rest)
   localStorage.setItem('lastPath', rest.location.pathname)
   localStorage.setItem('query', rest.location.search)
 
@@ -18,7 +17,6 @@ export const PrivateRoute = ({
           ? (<Component {...props} />)
           : (<Redirect to="/login" />)
       )}
-
     />
   )
 }

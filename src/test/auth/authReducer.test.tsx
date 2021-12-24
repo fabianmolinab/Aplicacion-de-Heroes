@@ -23,7 +23,6 @@ describe('Pruebas en authReducer', () => {
       }
     }
     const state = authReducer({logged: false}, action)
-
     expect(state).toEqual({logged: true, name: 'Fabian'})
   })
 
